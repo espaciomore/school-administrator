@@ -2,6 +2,7 @@ from klass import Klass
 from teacher import Teacher
 from student import Student
 from quiz import Quiz
+from question import Question
 
 import datetime
 import unittest
@@ -26,7 +27,12 @@ class Tests(unittest.TestCase):
 		self.klasses[1].addStudent(self.students[1])
 		self.klasses[1].addStudent(self.students[2])
 		# let teachers create quiz
-		self.teachers[0].createQuiz(self.klasses[0], ["W","X","Y","Z"], ["A","B","C","D"])
+		question1 = Question("What is a man?", ["An animal", "A bird", "An alien", "A God"])
+		question2 = Question("When did Jesus die?", ["02/25/0233", "00/00/0000", "12/24/0000", "04/04/0000"])
+		question3 = Question("What is Santa Claus?", ["A legend", "A hero", "An man", "An icon"])
+		question4 = Question("What is a star?", ["Earth", "Venus", "Moon", "Sun"])
+		solutions = ["A","B","C","D"]
+		self.teachers[0].createQuiz(self.klasses[0], [question1, question2, question3, question4], solutions)
 		# let teachers assign the quiz to students
 		self.teachers[0].assignQuiz(self.students[0], 0)
 		self.teachers[0].assignQuiz(self.students[1], 0)
