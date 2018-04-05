@@ -33,7 +33,7 @@ class Tests(unittest.TestCase):
 		self.teachers[0].assignQuiz(self.students[2], 0)
 		# let students submit their answers
 		self.students[0].submitAnswers(0, ["A","B","C","D"])
-		self.students[1].submitAnswers(0, ["A","B","B","D"])
+		self.students[1].submitAnswers(0, ["A","B","B","A"])
 		self.students[2].submitAnswers(0, ["A","B","C"])
 		pass
 
@@ -58,13 +58,16 @@ class Tests(unittest.TestCase):
 	def test_that_quizz_can_be_graded(self):
 		# the quizz is graded
 		self.assertEqual(self.students[0].quizzes[0].getGrade(), "A")
-		self.assertEqual(self.students[1].quizzes[0].getGrade(), "C")
+		self.assertEqual(self.students[1].quizzes[0].getGrade(), "F")
 		self.assertEqual(self.students[2].quizzes[0].getGrade(), "C")
 
 	def test_that_student_gpa_can_be_calculated(self):
 		# the student's gpa is calculated
 		now = datetime.datetime.now()
-		self.assertEqual(self.students[0].getGPA(now - datetime.timedelta(days=30*3), now), 4.0)
+		startDate = now - datetime.timedelta(days=30*3)
+		self.assertEqual(self.students[0].getGPA(startDate, now), 4.0)
+		self.assertEqual(self.students[1].getGPA(startDate, now), 0.0)
+		self.assertEqual(self.students[2].getGPA(startDate, now), 2.0)
 
 if __name__ == "__main__":
 	unittest.main()
