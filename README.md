@@ -1,4 +1,6 @@
 # school-administrator
+
+## Description
 - There are Teachers
 - There are Students
 - Students are in classes that teachers teach
@@ -9,9 +11,6 @@ once. (Partial submissions can be made).
 - Quizzes need to get graded
 - For each teacher, they can calculate each student's total grade accumulated over a semester
 for their classes
-
-## Description
-After freshing up my Python concepts I was able to finish the assignment.
 
 ## Steps
 1. create the tests (TDD) in xunit format
